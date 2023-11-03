@@ -3,6 +3,7 @@ const body = $.body;
 const audioElm = $.querySelector("audio");
 const divLeftSide = $.getElementById("left-side");
 const divRightSide = $.getElementById("right-side");
+const btnDarkMode = $.getElementById("darkmode");
 const music = [
   {
     id: 1,
@@ -76,9 +77,9 @@ const music = [
   },
 ];
 let haveRightElm = true;
-let id = 0 
+let id = 0;
 let isplay = true;
-let idNext = 1
+let idNext = 1;
 function createPlayRightSide(img_s, eUpdate) {
   // divRightSide.firstElementChild.remove()
   // divRightSide.lastElementChild.remove()
@@ -182,7 +183,7 @@ function createRightElm(img_s) {
     "d",
     "M3 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062A1.125 1.125 0 013 16.81V8.688zM12.75 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062a1.125 1.125 0 01-1.683-.977V8.688z"
   );
-  
+
   let s = newPathSvgNext;
   newSvgNext.appendChild(newPathSvgNext);
   newBtnNext.append(newSvgNext);
@@ -190,17 +191,15 @@ function createRightElm(img_s) {
   newDiv.append(newBtnProvies, newBtnPlayAndPause, newBtnNext);
   divRightSide.append(newImg, newDiv);
   // Event
-  idNext = idNext + 1
+  idNext = idNext + 1;
   $.getElementById("btn_next").addEventListener("click", () => {
-  
     console.log(id);
     music.forEach((e) => {
       if (idNext === e.id) {
-        img_s = e.Image
-        createPlayRightSide(img_s)
+        img_s = e.Image;
+        createPlayRightSide(img_s);
       }
     });
-  
   });
   $.getElementById("btn_provies").addEventListener("click", () => {
     console.log("btn_provies");
@@ -228,6 +227,7 @@ function createBtnLeftSide(e) {
   const newBtn = $.createElement("button");
   newBtn.className =
     "flex gap-1 p-2 bg-[#ffffff8c] shadow-sm backdrop-blur-[11.2px] rounded-md  transition-all ease-in-out w-60 items-center hover:bg-[#ffffff29] my-3";
+    newBtn.id = "btn_music"
   newBtn.addEventListener("click", () => {
     audioElm.src = e.path;
     const img_s = e.Image;
@@ -242,6 +242,7 @@ function createBtnLeftSide(e) {
   // new Div and Content
   const newDiv = $.createElement("div");
   newDiv.className = "text-left";
+
   const newP = $.createElement("p");
   newP.className = "text-gray-800";
   newP.innerHTML = e.name;
@@ -259,4 +260,24 @@ function createBtnLeftSide(e) {
 // newBtnNext.id = "btn_next"; =>> :)
 music.forEach((e) => {
   createBtnLeftSide(e);
+});
+let flagDark = false;
+if (
+  localStorage.getItem("theme") === null ||
+  localStorage.getItem("theme") === "light"
+) {
+  localStorage.setItem("theme", "light");
+}else{
+  document.body.classList.add("dark");
+  flagDark = true;
+}
+btnDarkMode.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  if (flagDark) {
+    localStorage.setItem("theme", "light");
+    flagDark = false;
+  } else {
+    localStorage.setItem("theme", "dark");
+    flagDark = true;
+  }
 });
