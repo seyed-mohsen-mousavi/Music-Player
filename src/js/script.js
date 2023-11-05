@@ -13,6 +13,7 @@ const music = [
     path: "../src/audio/Hiphopologist x Kagan - Daryakenar.mp3",
     Image: "../src/img/hiphop.jpg",
     time: "02:49",
+    threeD: false,
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ const music = [
     path: "../src/audio/Reza-Pishro-Qabil-darkstarmusic.ir-320.mp3",
     Image: "../src/img/qabil.jpg",
     time: "03:33",
+    threeD: false,
   },
   {
     id: 3,
@@ -29,6 +31,7 @@ const music = [
     path: "../src/audio/eminem-the-real-slim-shady-128.mp3",
     Image: "../src/img/eminem.jpeg",
     time: "04:44",
+    threeD: false,
   },
   {
     id: 4,
@@ -37,6 +40,25 @@ const music = [
     path: "../src/audio/Reza Pishro & Putak - Bale Ghorban.mp3",
     Image: "../src/img/baleghroban.png",
     time: "03:45",
+    threeD: false,
+  },
+  {
+    id: 5,
+    name: "Skiki ",
+    artist: " Chvrsi x Young Sudden",
+    path: "../src/audio/Skiki.mp3",
+    Image: "../src/img/Daam-Chvrsi.png",
+    time: "03:00",
+    threeD: false,
+  },
+  {
+    id: 6,
+    name: "Behesht ",
+    artist: "Tataloo",
+    path: "../src/audio/Behesht.mp3",
+    Image: "../src/img/Behesht.jpg",
+    time: "06:24",
+    threeD: true,
   },
 ];
 let haveRightElm = true;
@@ -270,6 +292,13 @@ function createBtnLeftSide(e) {
   newBtn.className =
     "flex gap-1 p-2 bg-[#ffffff8c] shadow-sm backdrop-blur-[11.2px] rounded-md  transition-all ease-in-out w-60 items-center hover:bg-[#ffffff29] my-3";
   newBtn.id = "btn_music";
+  newBtn.title = e.artist
+  if (e.threeD === true) {
+    const newTagSpan = $.createElement("span");
+    newBtn.append(newTagSpan);
+    newTagSpan.className = "threeD";
+    newTagSpan.innerHTML = "3D";
+  }
   newBtn.addEventListener("click", () => {
     audioElm.src = e.path;
     const img_s = e.Image;
@@ -278,6 +307,7 @@ function createBtnLeftSide(e) {
     const timeFull = e.time;
     createPlayRightSide(img_s, eUpdate, contentN, timeFull);
   });
+
   // new Img
   const newImg = $.createElement("img");
   newImg.className = "w-12 h-12 bg-white rounded-xl";
@@ -334,7 +364,7 @@ notif.innerHTML =
 if (localStorage.getItem("showNotif") === "true") {
   $.querySelector(".notification").style.display = "none";
 }
-$.querySelector(".notification-close").addEventListener("click",()=>{
+$.querySelector(".notification-close").addEventListener("click", () => {
   $.querySelector(".notification").style.display = "none";
-})
+});
 window.onload = localStorage.setItem("showNotif", true);
