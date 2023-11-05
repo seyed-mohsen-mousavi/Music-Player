@@ -9,6 +9,6 @@
 ##
 *یه حالت نظرات کوچییک هم داره*
 
-## Run
-*رو باز کن تمام ولذت ببرindexشو وفایل public فایل رو داخل لوکال خودت باز کن وارد پوشه ی*
-## our <a href="http://s-m-root.gigfa.com/" alt="music_Player">Music_Pleayer</a>
+## Run => <a href="http://s-m-root.gigfa.com/" alt="music_Player">Music_Pleayer</a>
+
+*برای تمایش بهتر رو کامپیوتر ولپ تاپ اجرا کن و تو گوشی هم مشکلی نداره برای کیفیت بهتر گفتم*
