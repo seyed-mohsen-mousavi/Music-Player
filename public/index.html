@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="./build/tailwind.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@1,300&family=Raleway&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 </head>
 
 <body class="h-screen flex bg-slate-300 bg-center bg-no-repeat bg-cover backdrop-5">
@@ -29,7 +28,7 @@
                         <div class="paper"></div>
                     </div>
                 </div>
-                Add Comment
+                Comment
             </a>
         </div>
         <div class="w-screen rounded-2xl p-2 relative flex">
@@ -43,6 +42,27 @@
             </div>
         </div>
     </section>
+    <div class="notification">
+        <div class="notification-header">
+            <h3 class="notification-title">New notification</h3>
+            <i class="fa fa-times notification-close">✖</i>
+        </div>
+        <div class="notification-container">
+            <div class="notification-media">
+                <img src="../src/img/Logo.jpeg" alt="" class="notification-user-avatar">
+                <i class="fa fa-thumbs-up notification-reaction"></i>
+            </div>
+            <div class="notification-content">
+                <p class="notification-text">
+                <strong>Hi !!</strong>, <strong></strong>
+                Choose one of the songs on the left,
+                <strong><a href="https://github.com/seyed-mohsen-mousavi" style="text-decoration:underline;">Follow For More</a></strong>
+                </p>
+                <span class="notification-timer" id="notif"></span>
+            </div>
+            <span class="notification-status"></span>
+        </div>
+    </div>
     <script src="../src/js/script.js"></script>
 </body>
 
