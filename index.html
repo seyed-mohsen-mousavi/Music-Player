@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Open source if you liked go the Github And Submit a Satr  -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Music List Mr.root</title>
+    <link href="./public/css/laptop.css" rel="stylesheet" type="text/css" media="only screen and (min-width: 768px)" />
+    <link rel="stylesheet" media="only screen and (min-width: 0px) and (max-width: 768px)"
+        href="./public/css/mobile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body class="h-screen flex bg-slate-300 bg-center bg-no-repeat bg-cover backdrop-5">
+    <section class="container bg-[#ffffff40] rounded-[16px] p-5 flex my-5 backdrop-blur-[6.8px] shadow-lg">
+        <div id="left-side" class="flex-col flex  py-3 px-5 overflow-auto w-[35rem]">
+            <p id="just-mobile"><a href="https://github.com/seyed-mohsen-mousavi">Mr.ROot</a></p>
+            <a class="continue-application" href="./public/comment.html" id="comment" style="width: 200px;">
+                <div>
+                    <div class="pencil"></div>
+                    <div class="folder">
+                        <div class="top">
+                            <svg viewBox="0 0 24 27">
+                                <path
+                                    d="M1,0 L23,0 C23.5522847,-1.01453063e-16 24,0.44771525 24,1 L24,8.17157288 C24,8.70200585 23.7892863,9.21071368 23.4142136,9.58578644 L20.5857864,12.4142136 C20.2107137,12.7892863 20,13.2979941 20,13.8284271 L20,26 C20,26.5522847 19.5522847,27 19,27 L1,27 C0.44771525,27 6.76353751e-17,26.5522847 0,26 L0,1 C-6.76353751e-17,0.44771525 0.44771525,1.01453063e-16 1,0 Z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="paper"></div>
+                    </div>
+                </div>
+                Comment
+            </a>
+            <hr style="margin-top: 7px;margin-bottom: 7px;">
+        </div>
+        <div class="w-screen rounded-2xl p-2 relative flex" id="filter">
+            <!-- ------------ -->
+            <div class="absolute right-5 top-5 search">
+                <input type="checkbox" class="theme-checkbox" id="darkmode">
+            </div>
+            <!-- ------------ -->
+            <audio src=""></audio>
+            <div class=" w-full rounded-2xl flex flex-col items-center justify-center s " id="right-side">
+            </div>
+        </div>
+    </section>
+    <!-- menu Mobile -->
+    <div id="menu">
+        <button id="menu_mobile">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            Menu</button>
+        <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+            </svg>
+            Comment</a>
+    </div>
+    <!-- Notifaction *** -->
+    <div class="notification">
+        <div class="notification-header">
+            <h3 class="notification-title">New notification</h3>
+            <i class="fa fa-times notification-close">✖</i>
+        </div>
+        <div class="notification-container">
+            <div class="notification-media">
+                <img src="../src/img/Logo.jpeg" alt="" class="notification-user-avatar">
+                <i class="fa fa-thumbs-up notification-reaction"></i>
+            </div>
+            <div class="notification-content">
+                <p class="notification-text">
+                    <strong>Hi !!</strong>, <strong></strong>
+                    Choose one of the songs on the left,
+                    <strong><a href="https://github.com/seyed-mohsen-mousavi" style="text-decoration:underline;"
+                            target="_blank">Follow For More</a></strong>
+                </p>
+                <span class="notification-timer" id="notif"></span>
+            </div>
+            <span class="notification-status"></span>
+        </div>
+    </div>
+    <script src="./src/js/script.js"></script>
+</body>
+
+</html>

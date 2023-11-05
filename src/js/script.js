@@ -5,13 +5,14 @@ const divLeftSide = $.getElementById("left-side");
 const divRightSide = $.getElementById("right-side");
 const btnDarkMode = $.getElementById("darkmode");
 const notif = $.getElementById("notif");
+let mobileMenu = $.getElementById("menu_mobile");
 const music = [
   {
     id: 1,
     name: "Darya Kenar",
     artist: "Hiphopologist",
-    path: "../src/audio/Hiphopologist x Kagan - Daryakenar.mp3",
-    Image: "../src/img/hiphop.jpg",
+    path: "./src/audio/Hiphopologist x Kagan - Daryakenar.mp3",
+    Image: "./src/img/hiphop.jpg",
     time: "02:49",
     threeD: false,
   },
@@ -19,8 +20,8 @@ const music = [
     id: 2,
     name: "Qabil",
     artist: "Reza Pishro",
-    path: "../src/audio/Reza-Pishro-Qabil-darkstarmusic.ir-320.mp3",
-    Image: "../src/img/qabil.jpg",
+    path: "./src/audio/Reza-Pishro-Qabil-darkstarmusic.ir-320.mp3",
+    Image: "./src/img/qabil.jpg",
     time: "03:33",
     threeD: false,
   },
@@ -28,8 +29,8 @@ const music = [
     id: 3,
     name: "Slim Shady",
     artist: "Eminem",
-    path: "../src/audio/eminem-the-real-slim-shady-128.mp3",
-    Image: "../src/img/eminem.jpeg",
+    path: "./src/audio/eminem-the-real-slim-shady-128.mp3",
+    Image: "./src/img/eminem.jpeg",
     time: "04:44",
     threeD: false,
   },
@@ -37,8 +38,8 @@ const music = [
     id: 4,
     name: "Bale Ghorban",
     artist: "Reza Pishro",
-    path: "../src/audio/Reza Pishro & Putak - Bale Ghorban.mp3",
-    Image: "../src/img/baleghroban.png",
+    path: "./src/audio/Reza Pishro & Putak - Bale Ghorban.mp3",
+    Image: "./src/img/baleghroban.png",
     time: "03:45",
     threeD: false,
   },
@@ -46,8 +47,8 @@ const music = [
     id: 5,
     name: "Skiki ",
     artist: " Chvrsi x Young Sudden",
-    path: "../src/audio/Skiki.mp3",
-    Image: "../src/img/Daam-Chvrsi.png",
+    path: "./src/audio/Skiki.mp3",
+    Image: "./src/img/Daam-Chvrsi.png",
     time: "03:00",
     threeD: false,
   },
@@ -55,10 +56,19 @@ const music = [
     id: 6,
     name: "Behesht ",
     artist: "Tataloo",
-    path: "../src/audio/Behesht.mp3",
-    Image: "../src/img/Behesht.jpg",
-    time: "06:24",
+    path: "./src/audio/Behesht.mp3",
+    Image: "./src/img/Behesht.jpg",
+    time: "05:37",
     threeD: true,
+  },
+  {
+    id: 7,
+    name: "Hanooz ",
+    artist: "Tataloo ft mj",
+    path: "./src/audio/Hanooz.mp3",
+    Image: "./src/img/Hanooz.jpg",
+    time: "06:24",
+    threeD: false,
   },
 ];
 let haveRightElm = true;
@@ -88,7 +98,7 @@ function createPlayRightSide(img_s, eUpdate, contentN, timeFull) {
     }
   }
 }
-body.style.backgroundImage = "url(../src/img/bg.jpg)";
+body.style.backgroundImage = "url(./src/img/bg.jpg)";
 function createRightElm(img_s, contentN, timeFull) {
   document.title = contentN;
   body.style.backgroundImage = "url(" + img_s + ")";
@@ -233,15 +243,15 @@ function createRightElm(img_s, contentN, timeFull) {
   divRightSide.append(newImg, controlAndContent);
   // All Event
   idNext = idNext + 1;
-  $.getElementById("btn_next").addEventListener("click", () => {
-    console.log(id);
-    music.forEach((e) => {
-      if (idNext === e.id) {
-        img_s = e.Image;
-        createPlayRightSide(img_s);
-      }
-    });
-  });
+  // $.getElementById("btn_next").addEventListener("click", () => {
+  //   console.log(id);
+  //   music.forEach((e) => {
+  //     if (idNext === e.id) {
+  //       img_s = e.Image;
+  //       createPlayRightSide(img_s);
+  //     }
+  //   });
+  // });
   $.getElementById("btn_provies").addEventListener("click", () => {
     console.log("btn_provies");
   });
@@ -292,7 +302,7 @@ function createBtnLeftSide(e) {
   newBtn.className =
     "flex gap-1 p-2 bg-[#ffffff8c] shadow-sm backdrop-blur-[11.2px] rounded-md  transition-all ease-in-out w-60 items-center hover:bg-[#ffffff29] my-3";
   newBtn.id = "btn_music";
-  newBtn.title = e.artist
+  newBtn.title = e.artist;
   if (e.threeD === true) {
     const newTagSpan = $.createElement("span");
     newBtn.append(newTagSpan);
@@ -368,3 +378,40 @@ $.querySelector(".notification-close").addEventListener("click", () => {
   $.querySelector(".notification").style.display = "none";
 });
 window.onload = localStorage.setItem("showNotif", true);
+
+function myFunction(x) {
+  if (x.matches) {
+    // If media query matches
+    // menu Event
+    function hiddenMenu() {
+      divLeftSide.style.visibility = "hidden";
+      divLeftSide.style.opacity = "0";
+      $.getElementById("filter").style.filter = "blur(0)";
+      open = false;
+    }
+    let open = false;
+    mobileMenu.addEventListener("click", () => {
+      if (open == false) {
+        divLeftSide.style.visibility = "visible";
+        divLeftSide.style.opacity = "1";
+        $.getElementById("filter").style.filter = "blur(20px)";
+        open = true;
+      } else {
+        hiddenMenu;
+      }
+    });
+    divLeftSide.addEventListener("click", () => {
+      hiddenMenu();
+    });
+    $.querySelector("section").addEventListener("click", () => {
+      hiddenMenu();
+    });
+  } else {
+    divLeftSide.style.visibility = "visible";
+    divLeftSide.style.opacity = "1";
+    $.getElementById("filter").style.filter = "blur(0px)";
+  }
+}
+var x = window.matchMedia("(max-width: 768px)");
+myFunction(x); // Call listener function at run time
+x.addListener(myFunction);
