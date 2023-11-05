@@ -2097,27 +2097,7 @@ video {
 
 
 
-@media only screen and (orientation: landscape) {
-  #right-side {
-    display: none;
-  }
 
-  #left-side {
-    visibility: hidden;
-    opacity: 0;
-  }
-
-  section {
-    visibility: hidden;
-    opacity: 0;
-  }body::after{
-    content: "لطفا گوشی رو بچرخون -Return to upright position-";
-    color: white;
-    left: 37%;
-    top: 37%;
-    position: absolute;
-  }
-}
 
 #left-side img {
   border: none;
