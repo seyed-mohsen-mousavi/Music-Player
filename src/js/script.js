@@ -58,7 +58,7 @@ const music = [
     artist: "Tataloo",
     path: "./src/audio/Behesht.mp3",
     Image: "./src/img/Behesht.jpg",
-    time: "05:37",
+    time: "06:24",
     threeD: true,
   },
   {
@@ -67,14 +67,22 @@ const music = [
     artist: "Tataloo ft mj",
     path: "./src/audio/Hanooz.mp3",
     Image: "./src/img/Hanooz.jpg",
-    time: "06:24",
+    time: "05:37",
+    threeD: false,
+  },
+  {
+    id: 8,
+    name: "Zombie",
+    artist: "Reza Pishro",
+    path: "./src/audio/Zombie.mp3",
+    Image: "./src/img/Zombie.jpg",
+    time: "04:10",
     threeD: false,
   },
 ];
 let haveRightElm = true;
 let id = 0;
 let isplay = true;
-let idNext = 1;
 function createPlayRightSide(img_s, eUpdate, contentN, timeFull) {
   // divRightSide.firstElementChild.remove()
   // divRightSide.lastElementChild.remove()
@@ -106,6 +114,18 @@ function createRightElm(img_s, contentN, timeFull) {
   newImg.className = "bg-slate-700 w-72 h-72 rounded-3xl animated fadeInUp";
   newImg.id = "right-img";
   newImg.src = img_s;
+  newImg.alt = contentN + "_image";
+  newImg.loading = "lazy";
+  const divImg = $.createElement("div");
+  // Add Loader
+  const divLoaderDiv = $.createElement("div");
+  const loaderDiv = $.createElement("div");
+  loaderDiv.className = "loader";
+  divLoaderDiv.className = "mamLoader";
+  divImg.classList.add("divImg");
+  divLoaderDiv.append(loaderDiv);
+  divImg.append(newImg, divLoaderDiv);
+  // Controls and Content music
   const controlAndContent = $.createElement("div");
   const pContent = $.createElement("p");
   const progresCurrent = $.createElement("div");
@@ -116,6 +136,7 @@ function createRightElm(img_s, contentN, timeFull) {
   timeFullText.innerHTML = timeFull;
   pContent.innerHTML = contentN;
   pContent.className = "name_music";
+  pContent.classList.add("blur")
   current.id = "curent";
   timeDiv.className = "time_current";
   const newDiv = $.createElement("div");
@@ -173,6 +194,7 @@ function createRightElm(img_s, contentN, timeFull) {
   newBtnNext.id = "btn_next";
   newBtnPlayAndPause.className =
     "bg-slate-500 p-2 rounded-full hover:bg-slate-600 animated fadeIn";
+  newBtnPlayAndPause.setAttribute("disabled", true);
   // svg add Provies ---------
   const newSvgProvies = $.createElementNS("http://www.w3.org/2000/svg", "svg");
   newSvgProvies.setAttribute("xmlns", "http://www.w3.org/2000/svg");
@@ -240,20 +262,24 @@ function createRightElm(img_s, contentN, timeFull) {
   newBtnNext.append(newSvgNext);
   // Append All btn and append To RightSide
   newDiv.append(newBtnProvies, newBtnPlayAndPause, newBtnNext);
-  divRightSide.append(newImg, controlAndContent);
+  divRightSide.append(divImg, controlAndContent);
   // All Event
-  idNext = idNext + 1;
-  // $.getElementById("btn_next").addEventListener("click", () => {
-  //   console.log(id);
-  //   music.forEach((e) => {
-  //     if (idNext === e.id) {
-  //       img_s = e.Image;
-  //       createPlayRightSide(img_s);
-  //     }
-  //   });
-  // });
   $.getElementById("btn_provies").addEventListener("click", () => {
-    console.log("btn_provies");
+    music.forEach((e) => {
+      if (id - 1 === e.id) {
+        const img_s = e.Image;
+        const contentN = e.name;
+        const timeFull = e.time;
+        divRightSide.firstElementChild.remove();
+        divRightSide.firstElementChild.remove();
+        audioElm.src = e.path;
+        audioElm.play();
+        createRightElm(img_s, contentN, timeFull);
+      }
+    });
+    if (id > 1) {
+      id--;
+    }
   });
   $.getElementById("btn_play").addEventListener("click", () => {
     if (isplay) {
@@ -294,6 +320,30 @@ function createRightElm(img_s, contentN, timeFull) {
       "M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0A.75.75 0 0115 4.5h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H15a.75.75 0 01-.75-.75V5.25z"
     );
     isplay = true;
+  }
+  $.getElementById("btn_next").addEventListener("click", () => {
+    music.forEach((e) => {
+      if (id + 1 === e.id) {
+        const img_s = e.Image;
+        const contentN = e.name;
+        const timeFull = e.time;
+        divRightSide.firstElementChild.remove();
+        divRightSide.firstElementChild.remove();
+        audioElm.src = e.path;
+        audioElm.play();
+        createRightElm(img_s, contentN, timeFull);
+      }
+    });
+    if (id < music.length) {
+      id++;
+    }
+  });
+  audioElm.addEventListener("loadedmetadata", loadFun);
+
+  function loadFun() {
+    divImg.classList.remove("divImg");
+    newBtnPlayAndPause.removeAttribute("disabled",true)
+    pContent.classList.remove("blur")
   }
 }
 function createBtnLeftSide(e) {
@@ -338,13 +388,11 @@ function createBtnLeftSide(e) {
   newBtn.append(newImg, newDiv);
   divLeftSide.append(newBtn);
 }
-// ----------
-// newBtnProvies.id = "btn_provies";
-// newBtnPlayAndPause.id = "btn_play";
-// newBtnNext.id = "btn_next"; =>> :)
+
 music.forEach((e) => {
   createBtnLeftSide(e);
 });
+// Dark And Light Mode
 let flagDark = false;
 if (
   localStorage.getItem("theme") === null ||

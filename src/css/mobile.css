@@ -1341,7 +1341,7 @@ video {
 
 
 .theme-checkbox {
-    --toggle-size: 12px;
+    --toggle-size: 10px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -1977,9 +1977,8 @@ video {
     height: 100%;
     left: 0;
     top: 0;
-    border-radius: 19px 0 0 19px;
     background: rgb(255 255 255 / 45%);
-    border-radius: 16px 0 0 16px;
+    border-radius: 0;
     box-shadow: 0 4px 30px rgb(0 0 0 / 37%);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -2150,7 +2149,12 @@ video {
     bottom: 10%;
     justify-content: space-around;
 }
-
+.pulse{
+    -webkit-animation: heartbeat 2.5s ease-in-out infinite both;
+    animation: heartbeat 2.5s ease-in-out infinite both;
+}.pulse:hover{
+    animation:none;
+}
 #menu button,
 a {
     display: flex;
@@ -2176,3 +2180,108 @@ a {
 .dark svg {
     color: white
 }
+@-webkit-keyframes heartbeat{from{-webkit-transform:scale(1);transform:scale(1);-webkit-transform-origin:center center;transform-origin:center center;-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}10%{-webkit-transform:scale(.91);transform:scale(.91);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}17%{-webkit-transform:scale(.98);transform:scale(.98);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}33%{-webkit-transform:scale(.87);transform:scale(.87);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}45%{-webkit-transform:scale(1);transform:scale(1);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}}@keyframes heartbeat{from{-webkit-transform:scale(1);transform:scale(1);-webkit-transform-origin:center center;transform-origin:center center;-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}10%{-webkit-transform:scale(.91);transform:scale(.91);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}17%{-webkit-transform:scale(.98);transform:scale(.98);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}33%{-webkit-transform:scale(.87);transform:scale(.87);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}45%{-webkit-transform:scale(1);transform:scale(1);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}}
+
+.divImg>img {
+    display: none;
+  }
+  .divImg> .mamLoader {
+    display: flex;
+      background: #ffffff4d;
+      width: 30rem;
+      height: 30rem;
+      border-radius: 1.5rem;
+      align-items: center;
+      justify-content: center;
+  }
+  .divImg> .mamLoader > .loader {
+    border: 4px solid rgba(0, 0, 0, .1);
+    border-left-color: transparent;
+    border-radius: 50%;
+  }
+  
+  .divImg .mamLoader>.loader {
+    border: 4px solid rgba(0, 0, 0, .1);
+    border-left-color: transparent;
+    width: 36px;
+    height: 36px;
+  }
+  
+  .divImg .mamLoader>.loader {
+    border: 4px solid rgba(0, 0, 0, .1);
+    border-left-color: transparent;
+    width: 36px;
+    height: 36px;
+    animation: spin89345 1s linear infinite;
+  }
+  
+  @keyframes spin89345 {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .blur{
+    border-radius: 5px;
+    color: transparent;
+    text-shadow: 1px -2px 7px #fff;
+
+  }
+  .Btn {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    /* overflow: hidden; */
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all .3s;
+  }
+  
+  .svgContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    backdrop-filter: blur(0px);
+    letter-spacing: 0.8px;
+    border-radius: 10px;
+    transition: all .3s;
+    border: 1px solid rgb(156, 156, 156);
+  }
+  
+  .BG {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #181818;
+    z-index: -1;
+    border-radius: 10px;
+    pointer-events: none;
+    transition: all .3s;
+  }
+  
+  .Btn:hover .BG {
+    transform: rotate(35deg);
+    transform-origin: bottom;
+  }
+  
+  .Btn:hover .svgContainer {
+    background-color: rgba(156, 156, 156, 0.466);
+    backdrop-filter: blur(4px);
+  }
+  .gitHub{
+    position: absolute;
+    bottom: 5%;
+    right: 3.5%;
+  }

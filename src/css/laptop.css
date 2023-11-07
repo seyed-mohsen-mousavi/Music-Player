@@ -1342,7 +1342,7 @@ video {
 
 
 .theme-checkbox {
-  --toggle-size: 12px;
+  --toggle-size: 11px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -2129,4 +2129,110 @@ video {
 
 .dark svg {
   color: white
+}
+
+.divImg>img {
+  display: none;
+}
+.divImg> .mamLoader {
+  display: flex;
+    background: #ffffff4d;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 1.5rem;
+    align-items: center;
+    justify-content: center;
+}
+.divImg> .mamLoader > .loader {
+  border: 4px solid rgba(0, 0, 0, .1);
+  border-left-color: transparent;
+  border-radius: 50%;
+}
+
+.divImg .mamLoader>.loader {
+  border: 4px solid rgba(0, 0, 0, .1);
+  border-left-color: transparent;
+  width: 36px;
+  height: 36px;
+}
+
+.divImg .mamLoader>.loader {
+  border: 4px solid rgba(0, 0, 0, .1);
+  border-left-color: transparent;
+  width: 36px;
+  height: 36px;
+  animation: spin89345 1s linear infinite;
+}
+
+@keyframes spin89345 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+.blur{
+  border-radius: 5px;
+  color: transparent;
+  text-shadow: 1px -2px 7px #fff;
+}
+.Btn {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  position: relative;
+  /* overflow: hidden; */
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.svgContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  backdrop-filter: blur(0px);
+  letter-spacing: 0.8px;
+  border-radius: 10px;
+  transition: all .3s;
+  border: 1px solid #9c9c9c6a;
+}
+
+.BG {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #181818;
+  z-index: -1;
+  border-radius: 10px;
+  pointer-events: none;
+  transition: all .3s;
+}
+
+.Btn:hover .BG {
+  transform: rotate(35deg);
+  transform-origin: bottom;
+}
+
+.Btn:hover .svgContainer {
+  background-color: rgba(156, 156, 156, 0.466);
+  backdrop-filter: blur(4px);
+}
+.gitHub{
+  position: absolute;
+  bottom: 5%;
+  right: 3.5%;
 }
