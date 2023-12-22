@@ -136,7 +136,7 @@ function createRightElm(img_s, contentN, timeFull) {
   timeFullText.innerHTML = timeFull;
   pContent.innerHTML = contentN;
   pContent.className = "name_music";
-  pContent.classList.add("blur")
+  pContent.classList.add("blur");
   current.id = "curent";
   timeDiv.className = "time_current";
   const newDiv = $.createElement("div");
@@ -342,8 +342,8 @@ function createRightElm(img_s, contentN, timeFull) {
 
   function loadFun() {
     divImg.classList.remove("divImg");
-    newBtnPlayAndPause.removeAttribute("disabled",true)
-    pContent.classList.remove("blur")
+    newBtnPlayAndPause.removeAttribute("disabled", true);
+    pContent.classList.remove("blur");
   }
 }
 function createBtnLeftSide(e) {
@@ -402,6 +402,7 @@ if (
 } else {
   document.body.classList.add("dark");
   flagDark = true;
+  btnDarkMode.checked = true;
 }
 btnDarkMode.addEventListener("click", () => {
   document.body.classList.toggle("dark");
